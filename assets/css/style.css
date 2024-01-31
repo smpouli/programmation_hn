@@ -1,0 +1,49 @@
+
+html {background-color:lightskyblue;
+      font-size: 14px;
+      width: 100vw;
+}
+
+h1{font-size: 2.5em; /*La taille de la police sera de 2,5 fois la taille de l'élément <body> soit 2,5 X 14px */
+    font-family: Georgia; 
+    /*peut aussi s'écrie font: 2.5em Georgia; */
+}
+
+h2{font-size: 1.5em; /*La taille de la police sera 1,5 fois la taille de l'élément <body> soit 1,5 X 14px */
+    font-family:Georgia;
+}
+
+
+
+
+#page{background-color: lightcyan;
+      border: 5px solid  darkblue;      
+      margin: auto;  /*centre la div*/ 
+      width: 70%;      
+      border-radius: 15px;
+}
+
+.entete{text-align:center;
+}
+
+#aboutme{margin-left: 40px; /*indentation à gauche du texte */  
+         line-height:1.5; 
+}
+
+
+
+p{
+    text-decoration-line: underline;  
+    font-size: 1.25em; 
+  }
+  
+  table, th, td {
+      border: 1px solid;
+      padding: 5px;
+    }
+
+footer{
+    border-top: 4px double darkblue;
+    text-align:center;
+    padding: 5px;
+}
