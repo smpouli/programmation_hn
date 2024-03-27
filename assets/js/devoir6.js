@@ -109,8 +109,6 @@ all_vers.forEach (vers => {
     else {
         temp.push(vers);
     }
-   
-
 })
 
 //Typologie des strophes
@@ -135,25 +133,28 @@ for (ens_lignes of Object.keys(type_strophes)){
 
 let type_syll = {};
 
-for (vers of all_vers) {
-    
-    if (vers.length>0){
-           
-        sans_espace = vers.trim().replace(/\s/g,'');       
+let cleaned_vers= [];
+
+
+for (vers of all_vers) {    
+    if (vers.length>0){ 
+        cleaned_vers.push(vers);      
+    }
+}
+
+for (let line of cleaned_vers){
+        sans_espace = line.trim().replace(/\s/g,'');       
         let syll = sans_espace.match(/[aàâiîeéèêoôuù]{1,}/g).length;
         if (syll>0){
         
             if (type_syll.hasOwnProperty(syll)==false){
-                type_syll[syll] = [all_vers.indexOf(vers)+1];
+                type_syll[syll] = [cleaned_vers.indexOf(line)+1];
             }
             else{
-            type_syll[syll].push(all_vers.indexOf(vers)+1);
-            }   
-                                    
-    }        
-        
-    }   
-}
+            type_syll[syll].push(cleaned_vers.indexOf(line)+1);
+            }                                       
+        }    
+}   
 
 let result_vers=[];
 
