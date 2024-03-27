@@ -177,33 +177,39 @@ for (ens_lignes of Object.keys(type_strophes)){
 //Décompte des syllabes
 /*On part du principe qu'une syllabe doit forcément contenir une voyelle ou plusieurs voyelles consécutives.
 Dans chaque ligne/vers non vide,on va compter le nombre de syllabes uniques ou consécutives. Bien sûr, il y a des exceptions 
-comme le e précédé d'un é.
+comme le e précédé d'un é ou encore avec les i.
 J'ai enlevé les espaces pour tenir compte d'éventuelles liaisons.
+Pour faciliter le décompte des syllabes, je commence par créer une liste contenant uniquement les vers (lignes non vides)
 On stocke le nombre de syllabes dans un dictionnaire et l'associe à l'indice du vers correspondant
 (auquel on ajoute 1 car l'index des listes commence à 0).*/
 
 let type_syll = {};
 
-for (vers of all_vers) {
-    
-    if (vers.length>0){           
-        sans_espace = vers.trim().replace(/\s/g,'');       
+let cleaned_vers= [];
+
+
+for (vers of all_vers) {    
+    if (vers.length>0){ 
+        cleaned_vers.push(vers);      
+    }
+}
+
+for (let line of cleaned_vers){
+        sans_espace = line.trim().replace(/\s/g,'');       
         let syll = sans_espace.match(/[aàâiîeéèêoôuù]{1,}/g).length;
         if (syll>0){
         
             if (type_syll.hasOwnProperty(syll)==false){
-                type_syll[syll] = [all_vers.indexOf(vers)+1];
+                type_syll[syll] = [cleaned_vers.indexOf(line)+1];
             }
             else{
-            type_syll[syll].push(all_vers.indexOf(vers)+1);
+            type_syll[syll].push(cleaned_vers.indexOf(line)+1);
             }   
                                     
-    }
-   
-             
+        }      
         
-    }   
-}
+}   
+
 
 
 //Affichage du nombre des syllabes des vers 
