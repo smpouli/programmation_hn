@@ -1,4 +1,4 @@
-
+//variables globales
 let cleaned_words = [];
 let dic_length = {};
 let freq = {};
@@ -44,6 +44,8 @@ window.onload = function () {
     });
 }
 
+
+// fonction pur afficher ou cacher l'aide sur la page principale
 function help() {
     
     let aide = document.getElementById("help_section");
@@ -59,6 +61,7 @@ function help() {
     }
 }
 
+// fonction pour tokéniser le texte, appelée à la ligne 32
 function tokenization (){    
     // récupération du contenu du fichier texte
     const output = document.getElementById("fileDisplayArea").innerText;   
@@ -89,6 +92,7 @@ function tokenization (){
 
 }
 
+// fonction subsisiaire pour compter les mots en fonction de leur longueur
 function text_to_dic (word_dic, list_tokens){
     
     for (let word of list_tokens) {
@@ -113,8 +117,8 @@ function text_to_dic (word_dic, list_tokens){
 
 }
 
+// fonction qui permet d'afficher le tableau qui liste les mots par nombre de caractères
 function sort_words() {
-
      //balise pour écriture des résultats
     let result = document.getElementById("page-analysis");
 
@@ -153,7 +157,7 @@ function sort_words() {
 }
 
 
-
+//démo pour la visualisation des mots par nombre de caractères => camembert
 function pie_chars() {
     
     
@@ -182,7 +186,7 @@ function pie_chars() {
     
 }
 
-
+//fonction subsidiaire pour compter les cooccurrents
 function count_sides (mot,dic, side){
     if (dic[mot]){
         dic[mot]["all"] += 1;
@@ -202,7 +206,7 @@ function count_sides (mot,dic, side){
 
 
 
-
+//décompte et affichage des cooccurrents par ordre alphabétique
 function collocates(){
 
     let pivot = document.getElementById("poleID").value.trim();
@@ -291,7 +295,7 @@ function collocates(){
 }
 
 
-
+//visualisation de tous les cooccurrents par ordre alphabétique même si cela peut parfois être illisible
 function collocates_viz(){
 
     let pivot = document.getElementById("poleID").value.trim();
